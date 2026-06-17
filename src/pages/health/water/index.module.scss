@@ -1,0 +1,259 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-md $page-padding 160rpx;
+}
+
+.formCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.formTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.formTitleIcon {
+  font-size: 36rpx;
+}
+
+.formItem {
+  margin-bottom: $spacing-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.formLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-sm;
+  display: block;
+}
+
+.formInputWrap {
+  display: flex;
+  align-items: center;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: 0 $spacing-md;
+  border: 2rpx solid transparent;
+  transition: all $transition-base;
+
+  &:focus-within {
+    border-color: #165DFF;
+    background: $color-bg-card;
+  }
+}
+
+.formInput {
+  flex: 1;
+  height: 88rpx;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: #165DFF;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.formUnit {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  margin-left: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.formHint {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+}
+
+.quickAmountGroup {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-sm;
+  margin-top: $spacing-sm;
+}
+
+.quickAmountBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md $spacing-xs;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  border: 2rpx solid transparent;
+  cursor: pointer;
+  transition: all $transition-base;
+}
+
+.quickAmountBtnActive {
+  border-color: #165DFF;
+  background: rgba(22, 93, 255, 0.08);
+}
+
+.quickAmountText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+}
+
+.quickAmountBtnActive .quickAmountText {
+  color: #165DFF;
+  font-weight: $font-weight-semibold;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: $spacing-lg 0 $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.sectionCount {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.recordList {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+}
+
+.recordItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+  transition: all $transition-base;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.recordIconWrap {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: $spacing-md;
+  background: rgba(22, 93, 255, 0.1);
+}
+
+.recordIcon {
+  font-size: 36rpx;
+}
+
+.recordInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.recordMain {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+  margin-bottom: 4rpx;
+}
+
+.recordValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: #165DFF;
+}
+
+.recordUnit {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.recordDate {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: $spacing-md;
+}
+
+.recordDateText {
+  display: block;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-bottom: 4rpx;
+}
+
+.recordStatusBadge {
+  padding: 4rpx $spacing-sm;
+  border-radius: $radius-xs;
+  display: inline-block;
+  background: rgba(0, 180, 42, 0.1);
+}
+
+.recordStatusText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-success;
+}
+
+.bottomBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding calc($spacing-md + env(safe-area-inset-bottom));
+  box-shadow: $shadow-float;
+}
+
+.saveBtn {
+  width: 100%;
+  height: $button-height-lg;
+  background: linear-gradient(135deg, #165DFF 0%, #4080FF 100%);
+  color: $color-text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-button;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

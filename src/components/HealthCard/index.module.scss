@@ -1,0 +1,158 @@
+@use '@/styles/variables.scss' as *;
+
+.card {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.iconWrap {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon {
+  font-size: 36rpx;
+}
+
+.titleWrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.time {
+  display: block;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: 4rpx;
+}
+
+.statusBadge {
+  padding: 4rpx $spacing-sm;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+}
+
+.statusNormal {
+  background: rgba(0, 180, 42, 0.1);
+}
+
+.statusWarning {
+  background: rgba(255, 125, 0, 0.1);
+}
+
+.statusDanger {
+  background: rgba(245, 63, 63, 0.1);
+}
+
+.statusNormal .statusText {
+  color: $color-success;
+}
+
+.statusWarning .statusText {
+  color: $color-warning;
+}
+
+.statusDanger .statusText {
+  color: $color-error;
+}
+
+.statusText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}
+
+.body {
+  min-height: 100rpx;
+  padding: $spacing-sm 0;
+}
+
+.valueWrap {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+}
+
+.value {
+  font-size: 56rpx;
+  font-weight: $font-weight-bold;
+  line-height: 1.1;
+}
+
+.subValue {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+}
+
+.value.statusNormal {
+  color: $color-primary !important;
+}
+
+.value.statusWarning {
+  color: $color-warning !important;
+}
+
+.value.statusDanger {
+  color: $color-error !important;
+}
+
+.emptyWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+}
+
+.emptyText {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+}
+
+.footer {
+  margin-top: $spacing-sm;
+}
+
+.actionBtn {
+  @include button-reset;
+  width: 100%;
+  height: $button-height-md;
+  border-radius: $radius-button;
+  border: none;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+.actionText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+}

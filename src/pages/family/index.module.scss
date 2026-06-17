@@ -1,0 +1,456 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-md $page-padding 120rpx;
+}
+
+.tabs {
+  display: flex;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: 8rpx;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.tabItem {
+  flex: 1;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+  cursor: pointer;
+}
+
+.tabItemActive {
+  background: $color-primary;
+}
+
+.tabText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.tabItemActive .tabText {
+  color: $color-text-white;
+  font-weight: $font-weight-semibold;
+}
+
+.summaryCard {
+  background: linear-gradient(135deg, $color-primary-light 0%, $color-primary 100%);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.summaryRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-sm;
+}
+
+.summaryItem {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-xs;
+  text-align: center;
+}
+
+.summaryValue {
+  display: block;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: 4rpx;
+}
+
+.summaryLabel {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.memberList {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.memberItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+  transition: all $transition-base;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.memberAvatar {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-round;
+  background: linear-gradient(135deg, $color-primary-bg 0%, $color-family-bg 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: $spacing-md;
+}
+
+.memberAvatarText {
+  font-size: 36rpx;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+}
+
+.memberInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.memberName {
+  display: block;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 4rpx;
+}
+
+.memberRole {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.memberTag {
+  padding: 4rpx $spacing-sm;
+  border-radius: $radius-xs;
+  margin-left: $spacing-sm;
+}
+
+.tagAuthorized {
+  background: rgba(0, 180, 42, 0.1);
+}
+
+.tagAuthorized .tagText {
+  color: $color-success;
+}
+
+.tagUnauthorized {
+  background: rgba(134, 144, 156, 0.1);
+}
+
+.tagUnauthorized .tagText {
+  color: $color-text-tertiary;
+}
+
+.tagText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}
+
+.memberActions {
+  display: flex;
+  gap: $spacing-xs;
+  flex-shrink: 0;
+  margin-left: $spacing-sm;
+}
+
+.memberActionBtn {
+  @include button-reset;
+  width: 64rpx;
+  height: 64rpx;
+  background: $color-bg-hover;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.memberActionBtnText {
+  font-size: 28rpx;
+}
+
+.messageList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.messageCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.99);
+  }
+}
+
+.messageHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-md;
+}
+
+.messageSender {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: $radius-round;
+  background: $color-family-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: $spacing-md;
+  flex-shrink: 0;
+}
+
+.messageSenderText {
+  font-size: 26rpx;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+}
+
+.messageInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.messageName {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.messageTime {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.messageUnread {
+  width: 16rpx;
+  height: 16rpx;
+  background: $color-error;
+  border-radius: $radius-round;
+  flex-shrink: 0;
+  margin-left: $spacing-sm;
+}
+
+.messageContent {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: 1.7;
+  padding: $spacing-md;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+  border-top-left-radius: 0;
+}
+
+.taskCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+  transition: all $transition-base;
+}
+
+.taskHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.taskInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.taskTitle {
+  display: block;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 4rpx;
+}
+
+.taskAssigned {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.taskStatusBadge {
+  padding: 6rpx $spacing-sm;
+  border-radius: $radius-xs;
+  flex-shrink: 0;
+  margin-left: $spacing-sm;
+}
+
+.taskPending {
+  background: rgba(255, 125, 0, 0.1);
+}
+
+.taskCompleted {
+  background: rgba(0, 180, 42, 0.1);
+}
+
+.taskPending .taskStatusText {
+  color: $color-warning;
+}
+
+.taskCompleted .taskStatusText {
+  color: $color-success;
+}
+
+.taskStatusText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}
+
+.taskDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.7;
+  padding: $spacing-md;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-md;
+}
+
+.taskFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $spacing-md;
+  border-top: 1rpx solid $color-divider;
+}
+
+.taskDue {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.taskCompleteBtn {
+  @include button-reset;
+  height: 56rpx;
+  padding: 0 $spacing-md;
+  background: $color-primary;
+  border-radius: $radius-button;
+  border: none;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.taskCompleteBtnText {
+  font-size: $font-size-xs;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.taskCompletedInfo {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.inputSection {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-top: $spacing-md;
+}
+
+.inputTitle {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+}
+
+.inputField {
+  width: 100%;
+  min-height: 160rpx;
+  padding: $spacing-md;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+  border: 2rpx solid transparent;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: 1.6;
+  margin-bottom: $spacing-md;
+  box-sizing: border-box;
+  transition: all $transition-base;
+
+  &:focus {
+    border-color: $color-primary;
+    background: $color-bg-card;
+  }
+}
+
+.submitBtn {
+  @include button-reset;
+  width: 100%;
+  height: $button-height-md;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-button;
+  border: none;
+
+  &:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+.submitBtnText {
+  font-size: $font-size-md;
+  color: $color-text-white;
+  font-weight: $font-weight-semibold;
+}
+
+.addMemberBtn {
+  @include button-reset;
+  width: 100%;
+  height: $button-height-md;
+  background: $color-bg-card;
+  border: 2rpx dashed $color-border;
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+
+  &:active {
+    opacity: 0.8;
+    background: $color-bg-hover;
+  }
+}
+
+.addMemberBtnText {
+  font-size: $font-size-md;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}

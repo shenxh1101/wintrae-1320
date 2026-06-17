@@ -1,0 +1,172 @@
+@use '@/styles/variables.scss' as *;
+
+.card {
+  display: flex;
+  align-items: stretch;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.99);
+    opacity: 0.9;
+  }
+}
+
+.leftBar {
+  width: 8rpx;
+  background: linear-gradient(180deg, $color-primary 0%, $color-primary-light 100%);
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  padding: $spacing-lg;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.typeBadge {
+  background: $color-medical-bg;
+  padding: 4rpx $spacing-sm;
+  border-radius: $radius-sm;
+}
+
+.typeText {
+  font-size: $font-size-xs;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.statusBadge {
+  padding: 4rpx $spacing-sm;
+  border-radius: $radius-sm;
+}
+
+.statusUpcoming {
+  background: rgba(255, 125, 0, 0.1);
+}
+
+.statusCompleted {
+  background: rgba(0, 180, 42, 0.1);
+}
+
+.statusCancelled {
+  background: rgba(134, 144, 156, 0.1);
+}
+
+.statusUpcoming .statusText {
+  color: $color-warning;
+}
+
+.statusCompleted .statusText {
+  color: $color-success;
+}
+
+.statusCancelled .statusText {
+  color: $color-text-tertiary;
+}
+
+.statusText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}
+
+.hospital {
+  display: block;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 4rpx;
+  @include text-ellipsis;
+}
+
+.department {
+  display: block;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-md;
+}
+
+.infoRow {
+  display: flex;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-sm;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.infoIcon {
+  font-size: $font-size-md;
+}
+
+.infoText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.itemsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  margin-top: $spacing-sm;
+  margin-bottom: $spacing-sm;
+}
+
+.itemTag {
+  background: $color-bg-hover;
+  padding: 4rpx $spacing-sm;
+  border-radius: $radius-xs;
+}
+
+.itemText {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.noteRow {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-xs;
+  margin-top: $spacing-sm;
+  padding-top: $spacing-sm;
+  border-top: 1rpx solid $color-divider;
+}
+
+.noteIcon {
+  font-size: $font-size-sm;
+  flex-shrink: 0;
+}
+
+.noteText {
+  flex: 1;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: 1.5;
+  @include text-ellipsis-multi(2);
+}
+
+.arrowWrap {
+  display: flex;
+  align-items: center;
+  padding-right: $spacing-md;
+  flex-shrink: 0;
+}
+
+.arrow {
+  font-size: 48rpx;
+  color: $color-text-tertiary;
+  line-height: 1;
+}

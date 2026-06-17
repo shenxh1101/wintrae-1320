@@ -1,0 +1,99 @@
+@use '@/styles/variables.scss' as *;
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+.iconWrapper {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-md;
+  background: $color-primary-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon {
+  font-size: 40rpx;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-xs;
+}
+
+.value {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: 1.2;
+}
+
+.unit {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.trendRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-xs;
+}
+
+.trendIcon {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+}
+
+.trendUp {
+  color: $color-error;
+}
+
+.trendDown {
+  color: $color-success;
+}
+
+.trendText {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.statusNormal .value {
+  color: $color-primary;
+}
+
+.statusWarning .value {
+  color: $color-warning;
+}
+
+.statusDanger .value {
+  color: $color-error;
+}

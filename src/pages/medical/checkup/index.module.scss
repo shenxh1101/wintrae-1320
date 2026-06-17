@@ -1,0 +1,236 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: $spacing-xl;
+}
+
+.headerCard {
+  background: $color-bg-card;
+  padding: $spacing-lg $page-padding;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.title {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  flex: 1;
+  margin-right: $spacing-md;
+}
+
+.hospital {
+  display: block;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+}
+
+.dateRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.dateIcon {
+  font-size: $font-size-md;
+}
+
+.dateText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.statsRow {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-md;
+  border-top: 1rpx solid $color-divider;
+}
+
+.statsItem {
+  flex: 1;
+  text-align: center;
+  padding: $spacing-sm;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+}
+
+.statsValue {
+  display: block;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: 4rpx;
+}
+
+.statsLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.valueNormal {
+  color: $color-success;
+}
+
+.valueWarning {
+  color: $color-warning;
+}
+
+.valueDanger {
+  color: $color-error;
+}
+
+.section {
+  background: $color-bg-card;
+  margin: 0 $page-padding $spacing-md;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.sectionTitleIcon {
+  font-size: $font-size-lg;
+}
+
+.sectionTitleText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.itemRow {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+}
+
+.itemInfo {
+  flex: 1;
+  min-width: 0;
+  margin-right: $spacing-md;
+}
+
+.itemName {
+  display: block;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  margin-bottom: 4rpx;
+}
+
+.itemRef {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.itemValueWrap {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.itemValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.statusBadge {
+  padding: 6rpx 14rpx;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+}
+
+.statusText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}
+
+.statusNormal {
+  background: rgba(0, 180, 42, 0.1);
+}
+
+.statusNormal .statusText {
+  color: $color-success;
+}
+
+.statusWarning {
+  background: rgba(255, 125, 0, 0.1);
+}
+
+.statusWarning .statusText {
+  color: $color-warning;
+}
+
+.statusDanger {
+  background: rgba(245, 63, 63, 0.1);
+}
+
+.statusDanger .statusText {
+  color: $color-error;
+}
+
+.conclusionCard {
+  background: $color-primary-bg;
+  border-left: 6rpx solid $color-primary;
+  padding: $spacing-md;
+  border-radius: $radius-sm;
+}
+
+.conclusionText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: $line-height-loose;
+}
+
+.reviewCard {
+  background: $color-accent-bg;
+  border-left: 6rpx solid $color-accent;
+  padding: $spacing-md;
+  border-radius: $radius-sm;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.reviewIcon {
+  font-size: $font-size-xxl;
+  flex-shrink: 0;
+}
+
+.reviewText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}

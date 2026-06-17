@@ -1,0 +1,406 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-md $page-padding 120rpx;
+}
+
+.reportHeader {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.reportHeaderTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.reportTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.reportTitleIcon {
+  font-size: 40rpx;
+}
+
+.reportTitleText {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+}
+
+.reportDateRange {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8rpx $spacing-sm;
+  border-radius: $radius-xs;
+}
+
+.reportSummary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.summaryItem {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-xs;
+}
+
+.summaryValue {
+  display: block;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: 4rpx;
+}
+
+.summaryLabel {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.reportCompliance {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: $radius-md;
+  padding: $spacing-md;
+}
+
+.complianceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.complianceLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+}
+
+.complianceValue {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+}
+
+.complianceBar {
+  height: 16rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-round;
+  overflow: hidden;
+}
+
+.complianceBarFill {
+  height: 100%;
+  background: $color-text-white;
+  border-radius: $radius-round;
+  transition: width $transition-base;
+}
+
+.sectionCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 2rpx solid $color-divider;
+}
+
+.sectionTitleIcon {
+  font-size: 32rpx;
+}
+
+.sectionTitleText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  flex: 1;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-md;
+}
+
+.statCard {
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  border: 2rpx solid $color-divider;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.statCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.statCardIconWrap {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: $radius-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statCardIcon {
+  font-size: 28rpx;
+}
+
+.statTrend {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  padding: 4rpx 12rpx;
+  border-radius: $radius-xs;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}
+
+.trendUp {
+  background: rgba(245, 63, 63, 0.1);
+  color: $color-error;
+}
+
+.trendDown {
+  background: rgba(0, 180, 42, 0.1);
+  color: $color-success;
+}
+
+.trendStable {
+  background: rgba(46, 125, 107, 0.1);
+  color: $color-primary;
+}
+
+.trendWarning {
+  background: rgba(255, 125, 0, 0.1);
+  color: $color-warning;
+}
+
+.statCardTitle {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: 8rpx;
+}
+
+.statCardValue {
+  display: flex;
+  align-items: baseline;
+  gap: 8rpx;
+  margin-bottom: $spacing-xs;
+}
+
+.statCardNumber {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.statCardUnit {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.statCardSub {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: 1.4;
+}
+
+.alertsSection {
+  background: rgba(245, 63, 63, 0.05);
+  border: 2rpx solid rgba(245, 63, 63, 0.15);
+}
+
+.alertsCount {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-error;
+}
+
+.alertsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.alertItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  border-left: 6rpx solid $color-error;
+}
+
+.alertItemWarning {
+  border-left-color: $color-warning;
+}
+
+.alertIcon {
+  font-size: 28rpx;
+  flex-shrink: 0;
+  margin-top: 4rpx;
+}
+
+.alertContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.alertTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 4rpx;
+}
+
+.alertDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.5;
+}
+
+.alertDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+}
+
+.adviceList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.adviceItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.adviceIconWrap {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: $radius-round;
+  background: $color-primary-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.adviceIcon {
+  font-size: 28rpx;
+}
+
+.adviceContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.adviceTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 8rpx;
+}
+
+.adviceDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.6;
+}
+
+.weekDays {
+  display: flex;
+  justify-content: space-between;
+  gap: $spacing-xs;
+  margin-top: $spacing-md;
+  padding-top: $spacing-md;
+  border-top: 2rpx solid $color-divider;
+}
+
+.weekDay {
+  flex: 1;
+  text-align: center;
+  padding: $spacing-xs 0;
+  border-radius: $radius-sm;
+  background: $color-bg-page;
+}
+
+.weekDayActive {
+  background: $color-primary-bg;
+}
+
+.weekDayDate {
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 4rpx;
+}
+
+.weekDayActive .weekDayDate {
+  color: $color-primary;
+}
+
+.weekDayName {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.emptyAlerts {
+  text-align: center;
+  padding: $spacing-xl $spacing-md;
+}
+
+.emptyAlertsIcon {
+  font-size: 64rpx;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.emptyAlertsText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+}

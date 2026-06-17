@@ -1,0 +1,50 @@
+@use '@/styles/variables.scss' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg $spacing-xs $spacing-md;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.actionBtn {
+  @include button-reset;
+  background: transparent;
+  border: none;
+  padding: $spacing-xs;
+  height: auto;
+  min-width: auto;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.actionText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-right: $spacing-xs;
+}
+
+.arrow {
+  font-size: $font-size-lg;
+  color: $color-text-tertiary;
+  line-height: 1;
+}

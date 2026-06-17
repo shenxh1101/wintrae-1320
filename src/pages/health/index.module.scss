@@ -1,0 +1,222 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-md $page-padding 120rpx;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.weekCard {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.weekHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.weekTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+}
+
+.weekDate {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.weekStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.weekStatItem {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-xs;
+}
+
+.weekStatValue {
+  display: block;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: 4rpx;
+}
+
+.weekStatLabel {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.weekAlerts {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: $radius-md;
+  padding: $spacing-md;
+}
+
+.weekAlertTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-xs;
+}
+
+.weekAlertIcon {
+  font-size: $font-size-md;
+}
+
+.weekAlertTitleText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: #FFE58F;
+}
+
+.weekAlertList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.weekAlertItem {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  padding-left: $spacing-sm;
+  border-left: 3rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.recordSection {
+  margin-bottom: $spacing-md;
+}
+
+.recordList {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+}
+
+.recordItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+  transition: all $transition-base;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.recordIconWrap {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: $spacing-md;
+}
+
+.recordIcon {
+  font-size: 36rpx;
+}
+
+.recordInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.recordMain {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+  margin-bottom: 4rpx;
+}
+
+.recordValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.recordUnit {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.recordSub {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.recordDate {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: $spacing-md;
+}
+
+.recordDateText {
+  display: block;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-bottom: 4rpx;
+}
+
+.recordStatusBadge {
+  padding: 4rpx $spacing-sm;
+  border-radius: $radius-xs;
+  display: inline-block;
+}
+
+.recordStatusText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}
+
+.statusNormal {
+  background: rgba(0, 180, 42, 0.1);
+}
+
+.statusWarning {
+  background: rgba(255, 125, 0, 0.1);
+}
+
+.statusDanger {
+  background: rgba(245, 63, 63, 0.1);
+}
+
+.statusNormal .recordStatusText {
+  color: $color-success;
+}
+
+.statusWarning .recordStatusText {
+  color: $color-warning;
+}
+
+.statusDanger .recordStatusText {
+  color: $color-error;
+}

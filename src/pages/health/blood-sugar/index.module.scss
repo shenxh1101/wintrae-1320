@@ -1,0 +1,314 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-md $page-padding 120rpx;
+}
+
+.formCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.formTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.formIcon {
+  font-size: 36rpx;
+}
+
+.inputGroup {
+  margin-bottom: $spacing-lg;
+}
+
+.inputLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-sm;
+  display: block;
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  background: $color-bg-page;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  padding: 0 $spacing-md;
+  height: 88rpx;
+  transition: all $transition-base;
+
+  &:focus-within {
+    border-color: $color-primary;
+    background: $color-bg-card;
+  }
+}
+
+.inputField {
+  flex: 1;
+  min-width: 0;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  background: transparent;
+  border: none;
+  outline: none;
+  height: 100%;
+}
+
+.inputUnit {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-left: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.typeGroup {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+}
+
+.typeOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  border-radius: $radius-md;
+  border: 2rpx solid $color-border;
+  background: $color-bg-card;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+  cursor: pointer;
+
+  &.active {
+    border-color: $color-accent;
+    background: $color-accent-bg;
+    color: $color-accent;
+    font-weight: $font-weight-semibold;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.dateTimeGroup {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+
+.dateTimeItem {
+  flex: 1;
+  min-width: 0;
+}
+
+.statusPreview {
+  background: rgba(255, 159, 115, 0.1);
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-lg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statusInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.statusValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-accent;
+}
+
+.statusLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.statusBadge {
+  padding: 8rpx $spacing-md;
+  border-radius: $radius-xs;
+  flex-shrink: 0;
+}
+
+.statusText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+.statusNormal {
+  background: rgba(0, 180, 42, 0.1);
+}
+
+.statusWarning {
+  background: rgba(255, 125, 0, 0.1);
+}
+
+.statusDanger {
+  background: rgba(245, 63, 63, 0.1);
+}
+
+.statusNormal .statusText {
+  color: $color-success;
+}
+
+.statusWarning .statusText {
+  color: $color-warning;
+}
+
+.statusDanger .statusText {
+  color: $color-error;
+}
+
+.saveButton {
+  width: 100%;
+  height: 96rpx;
+  background: $color-primary;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  border: none;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-primary-dark;
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    background: $color-text-disabled;
+  }
+}
+
+.historySection {
+  margin-top: $spacing-lg;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.sectionCount {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.historyList {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+}
+
+.historyItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.historyIconWrap {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-md;
+  background: rgba(255, 125, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: $spacing-md;
+}
+
+.historyIcon {
+  font-size: 36rpx;
+}
+
+.historyInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.historyMain {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+  margin-bottom: 4rpx;
+}
+
+.historyValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: #FF7D00;
+}
+
+.historyUnit {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.historySub {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.historyDate {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: $spacing-md;
+}
+
+.historyDateText {
+  display: block;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-bottom: 4rpx;
+}
+
+.historyStatusBadge {
+  padding: 4rpx $spacing-sm;
+  border-radius: $radius-xs;
+  display: inline-block;
+}
+
+.historyStatusText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}

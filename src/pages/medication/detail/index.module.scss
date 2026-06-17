@@ -1,0 +1,543 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-md $page-padding 160rpx;
+}
+
+.headerCard {
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent-light 100%);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+  position: relative;
+  overflow: hidden;
+}
+
+.headerDecor {
+  position: absolute;
+  right: -40rpx;
+  top: -40rpx;
+  width: 200rpx;
+  height: 200rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.headerDecor2 {
+  position: absolute;
+  right: 60rpx;
+  bottom: -80rpx;
+  width: 160rpx;
+  height: 160rpx;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+}
+
+.headerTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.headerMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.headerIconWrap {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-sm;
+}
+
+.headerIcon {
+  font-size: 48rpx;
+}
+
+.medicineName {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: 8rpx;
+}
+
+.medicineDosage {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.lowStockBadge {
+  padding: 8rpx $spacing-md;
+  background: rgba(245, 63, 63, 0.2);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: $radius-button;
+}
+
+.lowStockText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+}
+
+.headerStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-sm;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-md;
+  border-top: 2rpx solid rgba(255, 255, 255, 0.15);
+}
+
+.headerStatItem {
+  text-align: center;
+}
+
+.headerStatValue {
+  display: block;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: 4rpx;
+}
+
+.headerStatLabel {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sectionCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 2rpx solid $color-divider;
+}
+
+.sectionTitleIcon {
+  font-size: 32rpx;
+}
+
+.sectionTitleText {
+  flex: 1;
+}
+
+.progressSection {
+  margin-bottom: $spacing-lg;
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.progressLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+}
+
+.progressValue {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+}
+
+.progressBar {
+  height: 24rpx;
+  background: $color-bg-page;
+  border-radius: $radius-round;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-round;
+  transition: width $transition-base;
+  position: relative;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+}
+
+.stockSection {
+  margin-top: $spacing-lg;
+}
+
+.stockBarWrap {
+  position: relative;
+  margin-bottom: $spacing-sm;
+}
+
+.stockBar {
+  height: 24rpx;
+  background: $color-bg-page;
+  border-radius: $radius-round;
+  overflow: hidden;
+}
+
+.stockBarFill {
+  height: 100%;
+  border-radius: $radius-round;
+  transition: width $transition-base;
+}
+
+.stockBarFillOk {
+  background: linear-gradient(90deg, $color-success 0%, #52C41A 100%);
+}
+
+.stockBarFillWarn {
+  background: linear-gradient(90deg, $color-warning 0%, #FFC53D 100%);
+}
+
+.stockBarFillLow {
+  background: linear-gradient(90deg, $color-error 0%, #FF7875 100%);
+}
+
+.stockBarFillEmpty {
+  background: $color-text-disabled;
+}
+
+.refillThresholdLine {
+  position: absolute;
+  top: -8rpx;
+  bottom: -8rpx;
+  width: 4rpx;
+  background: $color-error;
+  border-radius: 2rpx;
+
+  &::before {
+    content: '复购线';
+    position: absolute;
+    top: -28rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18rpx;
+    color: $color-error;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+  }
+}
+
+.stockInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: $spacing-md;
+}
+
+.stockText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.stockTextStrong {
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.refillAlert {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  background: rgba(245, 63, 63, 0.06);
+  border: 2rpx solid rgba(245, 63, 63, 0.15);
+  border-radius: $radius-md;
+  margin-top: $spacing-md;
+}
+
+.refillAlertIcon {
+  font-size: 28rpx;
+}
+
+.refillAlertText {
+  flex: 1;
+  font-size: $font-size-sm;
+  color: $color-error;
+  font-weight: $font-weight-medium;
+}
+
+.refillAlertBtn {
+  @include button-reset;
+  height: 52rpx;
+  padding: 0 $spacing-md;
+  background: $color-error;
+  border-radius: $radius-button;
+  border: none;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.refillAlertBtnText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+}
+
+.timesList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.timeItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+  cursor: pointer;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.timeIndex {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  flex-shrink: 0;
+}
+
+.timeIndexPending {
+  background: rgba(134, 144, 156, 0.12);
+  color: $color-text-tertiary;
+}
+
+.timeIndexDone {
+  background: rgba(0, 180, 42, 0.12);
+  color: $color-success;
+}
+
+.timeContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  letter-spacing: 2rpx;
+  margin-bottom: 4rpx;
+}
+
+.timeValueDone {
+  text-decoration: line-through;
+  color: $color-text-tertiary;
+}
+
+.timeStatus {
+  font-size: $font-size-xs;
+}
+
+.timeStatusPending {
+  color: $color-text-tertiary;
+}
+
+.timeStatusDone {
+  color: $color-success;
+  font-weight: $font-weight-medium;
+}
+
+.timeCheck {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: $radius-round;
+  border: 3rpx solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all $transition-base;
+}
+
+.timeCheckDone {
+  background: $color-success;
+  border-color: $color-success;
+  box-shadow: 0 4rpx 12rpx rgba(0, 180, 42, 0.3);
+}
+
+.timeCheckIcon {
+  font-size: 32rpx;
+  color: $color-text-white;
+  font-weight: $font-weight-bold;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all $transition-base;
+}
+
+.timeCheckDone .timeCheckIcon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.timeCheckPending .timeCheckIcon {
+  opacity: 0;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+}
+
+.infoItemFull {
+  grid-column: 1 / -1;
+}
+
+.infoLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.infoValue {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.infoValueEmpty {
+  color: $color-text-disabled;
+  font-style: italic;
+}
+
+.instructionsBox {
+  padding: $spacing-md;
+  background: $color-accent-bg;
+  border-radius: $radius-md;
+  border-left: 6rpx solid $color-accent;
+}
+
+.instructionsText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.7;
+}
+
+.actionBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $spacing-md $page-padding;
+  padding-bottom: calc(#{$spacing-md} + env(safe-area-inset-bottom));
+  background: $color-bg-card;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: $spacing-md;
+  z-index: 100;
+}
+
+.actionBtn {
+  @include button-reset;
+  flex: 1;
+  height: $button-height-lg;
+  border-radius: $radius-button;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.editBtn {
+  background: $color-primary-bg;
+}
+
+.editBtnText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+}
+
+.deleteBtn {
+  background: rgba(245, 63, 63, 0.08);
+}
+
+.deleteBtnText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-error;
+}
+
+.checkAllBtn {
+  @include button-reset;
+  flex: 2;
+  height: $button-height-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-button;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4rpx 12rpx rgba(46, 125, 107, 0.25);
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}
+
+.checkAllBtnText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+}

@@ -1,0 +1,294 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-md $page-padding 160rpx;
+}
+
+.tabs {
+  display: flex;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: 8rpx;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.tabItem {
+  flex: 1;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+  cursor: pointer;
+}
+
+.tabItemActive {
+  background: $color-primary;
+}
+
+.tabText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.tabItemActive .tabText {
+  color: $color-text-white;
+  font-weight: $font-weight-semibold;
+}
+
+.upcomingBadge {
+  position: absolute;
+  top: 4rpx;
+  right: 20%;
+  min-width: 32rpx;
+  height: 32rpx;
+  padding: 0 8rpx;
+  background: $color-error;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upcomingBadgeText {
+  font-size: 20rpx;
+  color: $color-text-white;
+  font-weight: $font-weight-bold;
+}
+
+.nextAppointment {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.nextHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+}
+
+.nextIcon {
+  font-size: 32rpx;
+}
+
+.nextTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+}
+
+.nextHospital {
+  display: block;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: 8rpx;
+}
+
+.nextDept {
+  display: block;
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: $spacing-md;
+}
+
+.nextInfoRow {
+  display: flex;
+  gap: $spacing-lg;
+  padding-top: $spacing-md;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.nextInfoItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.nextInfoIcon {
+  font-size: $font-size-md;
+}
+
+.nextInfoText {
+  font-size: $font-size-sm;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.listSection {
+  margin-bottom: $spacing-md;
+}
+
+.checkupCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.99);
+    opacity: 0.9;
+  }
+}
+
+.checkupHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.checkupInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.checkupTitle {
+  display: block;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 4rpx;
+}
+
+.checkupHospital {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.checkupDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: 4rpx;
+}
+
+.checkupArrow {
+  font-size: 48rpx;
+  color: $color-text-tertiary;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-left: $spacing-sm;
+}
+
+.checkupStats {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.checkupStatItem {
+  flex: 1;
+  padding: $spacing-sm;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+  text-align: center;
+}
+
+.checkupStatValue {
+  display: block;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: 4rpx;
+}
+
+.statNormal {
+  color: $color-success;
+}
+
+.statWarning {
+  color: $color-warning;
+}
+
+.statDanger {
+  color: $color-error;
+}
+
+.checkupStatLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.adviceCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.adviceHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.adviceIcon {
+  font-size: 32rpx;
+}
+
+.adviceDoctor {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.adviceDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-left: auto;
+}
+
+.adviceContent {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.8;
+  background: $color-primary-bg;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  border-left: 6rpx solid $color-primary;
+}
+
+.emptyWrap {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  padding: $spacing-xl;
+}
+
+.addFab {
+  position: fixed;
+  right: $page-padding;
+  bottom: 120rpx;
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: $radius-round;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(46, 125, 107, 0.3);
+  z-index: 99;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.addFabText {
+  font-size: 56rpx;
+  color: $color-text-white;
+  font-weight: $font-weight-light;
+  line-height: 1;
+}

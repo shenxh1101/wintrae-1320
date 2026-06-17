@@ -1,0 +1,418 @@
+@use '@/styles/variables.scss' as *;
+
+$elder-font-xs: 32rpx;
+$elder-font-sm: 36rpx;
+$elder-font-md: 42rpx;
+$elder-font-lg: 48rpx;
+$elder-font-xl: 56rpx;
+$elder-font-xxl: 72rpx;
+$elder-button-height: 140rpx;
+
+.page {
+  min-height: 100vh;
+  background: #F0F4F2;
+  padding-bottom: 60rpx;
+}
+
+.header {
+  background: linear-gradient(180deg, $color-primary 0%, $color-primary-light 100%);
+  padding: 40rpx 40rpx 60rpx;
+  border-radius: 0 0 40rpx 40rpx;
+}
+
+.greetingTop {
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+.elderName {
+  display: block;
+  font-size: $elder-font-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: 12rpx;
+}
+
+.dateText {
+  display: block;
+  font-size: $elder-font-md;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: $font-weight-medium;
+  margin-bottom: 8rpx;
+}
+
+.timeText {
+  display: block;
+  font-size: $elder-font-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  letter-spacing: 4rpx;
+}
+
+.weatherRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20rpx;
+  margin-top: 24rpx;
+  padding: 20rpx 40rpx;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: $radius-round;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weatherIcon {
+  font-size: $elder-font-lg;
+}
+
+.weatherText {
+  font-size: $elder-font-sm;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.exitBtn {
+  position: absolute;
+  top: 24rpx;
+  right: 32rpx;
+  padding: 12rpx 28rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-round;
+}
+
+.exitBtnText {
+  font-size: $elder-font-xs;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.todoSection {
+  margin: -30rpx 32rpx 40rpx;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  padding: 40rpx 32rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+}
+
+.todoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32rpx;
+}
+
+.todoTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.todoTitleIcon {
+  font-size: $elder-font-xl;
+}
+
+.todoTitle {
+  font-size: $elder-font-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.todoProgress {
+  padding: 12rpx 28rpx;
+  background: $color-primary-bg;
+  border-radius: $radius-round;
+}
+
+.todoProgressText {
+  font-size: $elder-font-sm;
+  color: $color-primary;
+  font-weight: $font-weight-bold;
+}
+
+.todoList {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.todoItem {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 28rpx;
+  background: #F7FAF9;
+  border-radius: $radius-lg;
+  min-height: $elder-button-height;
+  transition: all $transition-base;
+  border: 3rpx solid #E8EEEC;
+
+  &:active {
+    background: $color-primary-bg;
+    border-color: $color-primary;
+  }
+}
+
+.todoCheck {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: $radius-round;
+  border: 4rpx solid #C5CDCB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 28rpx;
+  transition: all $transition-base;
+}
+
+.todoChecked {
+  background: $color-primary;
+  border-color: $color-primary;
+}
+
+.todoCheckIcon {
+  font-size: 40rpx;
+  color: $color-text-white;
+  font-weight: $font-weight-bold;
+  opacity: 0;
+  transition: opacity $transition-base;
+}
+
+.todoChecked .todoCheckIcon {
+  opacity: 1;
+}
+
+.todoContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.todoItemTitle {
+  display: block;
+  font-size: $elder-font-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: 8rpx;
+  line-height: 1.4;
+}
+
+.todoItemTitleDone {
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+  text-decoration-thickness: 3rpx;
+}
+
+.todoTimeRow {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.todoTimeIcon {
+  font-size: $elder-font-sm;
+}
+
+.todoTime {
+  font-size: $elder-font-xs;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.todoTypeTag {
+  padding: 10rpx 24rpx;
+  border-radius: $radius-round;
+  flex-shrink: 0;
+  margin-left: 20rpx;
+}
+
+.todoTypeText {
+  font-size: $elder-font-xs;
+  font-weight: $font-weight-semibold;
+}
+
+.typeMedicine {
+  background: rgba(255, 159, 115, 0.15);
+}
+
+.typeMedicine .todoTypeText {
+  color: #E07043;
+}
+
+.typeHealth {
+  background: $color-primary-bg;
+}
+
+.typeHealth .todoTypeText {
+  color: $color-primary;
+}
+
+.typeAppointment {
+  background: rgba(92, 179, 154, 0.15);
+}
+
+.typeAppointment .todoTypeText {
+  color: #3D8F7A;
+}
+
+.sosSection {
+  margin: 0 32rpx;
+  padding: 48rpx 32rpx;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.08);
+}
+
+.sosHeader {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.sosTitle {
+  display: block;
+  font-size: $elder-font-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: 12rpx;
+}
+
+.sosSubtitle {
+  font-size: $elder-font-sm;
+  color: $color-text-secondary;
+}
+
+.sosBtnWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.sosBtn {
+  width: 380rpx;
+  height: 380rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #FF6B6B 0%, #F53F3F 60%, #D32F2F 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 16rpx 48rpx rgba(245, 63, 63, 0.4),
+    0 0 0 12rpx rgba(245, 63, 63, 0.1),
+    0 0 0 24rpx rgba(245, 63, 63, 0.05);
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.96);
+    box-shadow:
+      0 8rpx 24rpx rgba(245, 63, 63, 0.5),
+      0 0 0 8rpx rgba(245, 63, 63, 0.15),
+      0 0 0 16rpx rgba(245, 63, 63, 0.08);
+  }
+}
+
+.sosBtnIcon {
+  font-size: 120rpx;
+  margin-bottom: 16rpx;
+}
+
+.sosBtnText {
+  font-size: $elder-font-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  letter-spacing: 4rpx;
+}
+
+.sosBtnSub {
+  font-size: $elder-font-xs;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 8rpx;
+}
+
+.familyCallTitle {
+  text-align: center;
+  font-size: $elder-font-sm;
+  color: $color-text-secondary;
+  margin-bottom: 24rpx;
+}
+
+.familyCallList {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.familyCallItem {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 28rpx;
+  background: #F7FAF9;
+  border-radius: $radius-lg;
+  min-height: $elder-button-height;
+  border: 3rpx solid #E8EEEC;
+  transition: all $transition-base;
+
+  &:active {
+    background: rgba(46, 125, 107, 0.1);
+    border-color: $color-primary;
+  }
+}
+
+.familyAvatar {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-round;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.familyAvatarText {
+  font-size: $elder-font-md;
+  color: $color-text-white;
+  font-weight: $font-weight-bold;
+}
+
+.familyInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.familyName {
+  display: block;
+  font-size: $elder-font-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: 6rpx;
+}
+
+.familyRole {
+  font-size: $elder-font-xs;
+  color: $color-text-secondary;
+}
+
+.familyCallBtn {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: $radius-round;
+  background: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 20rpx;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+}
+
+.familyCallIcon {
+  font-size: 48rpx;
+}

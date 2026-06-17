@@ -1,0 +1,434 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-md $page-padding 160rpx;
+}
+
+.formCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.formCardTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 2rpx solid $color-divider;
+}
+
+.formCardIcon {
+  font-size: 32rpx;
+}
+
+.formGroup {
+  margin-bottom: $spacing-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.formLabel {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-sm;
+}
+
+.formLabelRequired {
+  color: $color-error;
+  font-weight: $font-weight-bold;
+}
+
+.formInput {
+  width: 100%;
+  height: 88rpx;
+  padding: 0 $spacing-md;
+  background: $color-bg-page;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+  transition: all $transition-base;
+
+  &::placeholder {
+    color: $color-text-disabled;
+  }
+
+  &:focus,
+  &:active {
+    border-color: $color-primary;
+    background: $color-bg-card;
+  }
+}
+
+.formInputError {
+  border-color: $color-error;
+}
+
+.formInputIcon {
+  position: absolute;
+  right: $spacing-md;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32rpx;
+  color: $color-text-tertiary;
+  pointer-events: none;
+}
+
+.formInputWrap {
+  position: relative;
+}
+
+.frequencyOptions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.frequencyOption {
+  flex: 1;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-bg-page;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.frequencyOptionActive {
+  background: $color-primary-bg;
+  border-color: $color-primary;
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+}
+
+.timesSection {
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+}
+
+.timesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.timesLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+}
+
+.addTimeBtn {
+  @include button-reset;
+  height: 56rpx;
+  padding: 0 $spacing-md;
+  background: $color-accent-bg;
+  border: none;
+  border-radius: $radius-button;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.addTimeBtnText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-accent;
+}
+
+.timesList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.timeItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  background: $color-bg-card;
+  border: 2rpx solid $color-divider;
+  border-radius: $radius-sm;
+  padding: $spacing-sm $spacing-md;
+}
+
+.timeItemIndex {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: $radius-round;
+  background: $color-primary-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+.timeItemInput {
+  flex: 1;
+  height: 56rpx;
+  border: none;
+  background: transparent;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  letter-spacing: 2rpx;
+
+  &::placeholder {
+    color: $color-text-disabled;
+  }
+}
+
+.timeItemDelete {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: $radius-round;
+  background: rgba(245, 63, 63, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all $transition-base;
+
+  &:active {
+    background: rgba(245, 63, 63, 0.15);
+  }
+}
+
+.timeItemDeleteIcon {
+  font-size: 24rpx;
+  color: $color-error;
+  font-weight: $font-weight-bold;
+}
+
+.timesHint {
+  margin-top: $spacing-sm;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-align: center;
+}
+
+.quantityRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-sm;
+}
+
+.quantityItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.quantityLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-bottom: $spacing-xs;
+}
+
+.quantityInput {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 $spacing-sm;
+  background: $color-bg-page;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  text-align: center;
+  box-sizing: border-box;
+  transition: all $transition-base;
+
+  &::placeholder {
+    color: $color-text-disabled;
+    font-size: $font-size-sm;
+  }
+
+  &:focus,
+  &:active {
+    border-color: $color-primary;
+    background: $color-bg-card;
+  }
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160rpx;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: 1.6;
+  box-sizing: border-box;
+  resize: none;
+  transition: all $transition-base;
+
+  &::placeholder {
+    color: $color-text-disabled;
+  }
+
+  &:focus,
+  &:active {
+    border-color: $color-primary;
+    background: $color-bg-card;
+  }
+}
+
+.previewCard {
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent-light 100%);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.previewTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  margin-bottom: $spacing-md;
+}
+
+.previewIcon {
+  font-size: 28rpx;
+}
+
+.previewName {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: 8rpx;
+}
+
+.previewNameEmpty {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.previewDosage {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: $spacing-md;
+}
+
+.previewTimes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.previewTimeTag {
+  padding: 8rpx $spacing-md;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-white;
+}
+
+.previewEmpty {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.footerBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $spacing-md $page-padding;
+  padding-bottom: calc(#{$spacing-md} + env(safe-area-inset-bottom));
+  background: $color-bg-card;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: $spacing-md;
+  z-index: 100;
+}
+
+.cancelBtn {
+  @include button-reset;
+  flex: 1;
+  height: $button-height-lg;
+  background: $color-bg-page;
+  border: 2rpx solid $color-border;
+  border-radius: $radius-button;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.cancelBtnText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+}
+
+.submitBtn {
+  @include button-reset;
+  flex: 2;
+  height: $button-height-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border: none;
+  border-radius: $radius-button;
+  cursor: pointer;
+  box-shadow: 0 4rpx 12rpx rgba(46, 125, 107, 0.25);
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}
+
+.submitBtnText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+}
+
+.errorText {
+  font-size: $font-size-xs;
+  color: $color-error;
+  margin-top: $spacing-xs;
+  padding-left: $spacing-xs;
+}

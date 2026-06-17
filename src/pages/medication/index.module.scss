@@ -1,0 +1,195 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding: $spacing-md $page-padding 160rpx;
+}
+
+.todaySummary {
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent-light 100%);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.summaryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.summaryTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.summaryIcon {
+  font-size: 36rpx;
+}
+
+.summaryTitleText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+}
+
+.summaryDate {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.summaryStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.summaryStatItem {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-xs;
+  text-align: center;
+}
+
+.summaryStatValue {
+  display: block;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: 4rpx;
+}
+
+.summaryStatLabel {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.summaryProgress {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-round;
+  height: 20rpx;
+  overflow: hidden;
+  margin-bottom: $spacing-xs;
+}
+
+.summaryProgressFill {
+  height: 100%;
+  background: $color-text-white;
+  border-radius: $radius-round;
+  transition: width $transition-base;
+}
+
+.summaryProgressText {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: right;
+}
+
+.refillSection {
+  background: rgba(245, 63, 63, 0.06);
+  border: 2rpx solid rgba(245, 63, 63, 0.15);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+.refillHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.refillIcon {
+  font-size: 32rpx;
+}
+
+.refillTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-error;
+}
+
+.refillList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.refillItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+}
+
+.refillItemName {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.refillItemStock {
+  font-size: $font-size-sm;
+  color: $color-error;
+  font-weight: $font-weight-semibold;
+}
+
+.refillBtn {
+  @include button-reset;
+  height: 56rpx;
+  padding: 0 $spacing-md;
+  background: $color-error;
+  border-radius: $radius-button;
+  border: none;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.refillBtnText {
+  font-size: $font-size-xs;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.medicineList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.addFab {
+  position: fixed;
+  right: $page-padding;
+  bottom: 120rpx;
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: $radius-round;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(46, 125, 107, 0.3);
+  z-index: 99;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.addFabText {
+  font-size: 56rpx;
+  color: $color-text-white;
+  font-weight: $font-weight-light;
+  line-height: 1;
+}
