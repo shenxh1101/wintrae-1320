@@ -7,26 +7,21 @@ import { useAppStore } from '@/store';
 import SectionHeader from '@/components/SectionHeader';
 import HealthCard from '@/components/HealthCard';
 import MedicationCard from '@/components/MedicationCard';
-import {
-  mockBloodPressureRecords,
-  mockBloodSugarRecords,
-  mockTemperatureRecords,
-  mockSleepRecords,
-  mockWaterRecords,
-  mockBowelRecords
-} from '@/data/health';
-import { mockMedicines } from '@/data/medication';
 import { getTodayDate, getCurrentTime } from '@/utils';
 import type { DailyTodo, HealthStatus } from '@/types';
 
+const elderName = '王奶奶';
+const elderAge = 78;
+
 const HomePage: React.FC = () => {
   const {
-    elderName,
-    elderAge,
     bloodPressureRecords,
     bloodSugarRecords,
     temperatureRecords,
+    waterRecords,
+    sleepRecords,
     medicines,
+    todos,
     toggleMedicineTaken,
     toggleTodo
   } = useAppStore();
@@ -34,76 +29,35 @@ const HomePage: React.FC = () => {
   const today = getTodayDate();
 
   const todayBP = useMemo(() => {
-    const all = [...mockBloodPressureRecords, ...bloodPressureRecords];
-    return all.find(r => r.date === today) || all[0];
+    return bloodPressureRecords.find(r => r.date === today) || bloodPressureRecords[0];
   }, [bloodPressureRecords, today]);
 
   const todayBS = useMemo(() => {
-    const all = [...mockBloodSugarRecords, ...bloodSugarRecords];
-    return all.find(r => r.date === today) || all[0];
+    return bloodSugarRecords.find(r => r.date === today) || bloodSugarRecords[0];
   }, [bloodSugarRecords, today]);
 
   const todayTemp = useMemo(() => {
-    const all = [...mockTemperatureRecords, ...temperatureRecords];
-    return all.find(r => r.date === today) || all[0];
+    return temperatureRecords.find(r => r.date === today) || temperatureRecords[0];
   }, [temperatureRecords, today]);
 
   const todayWater = useMemo(() => {
-    const all = [...mockWaterRecords];
-    return all.filter(r => r.date === today).reduce((sum, r) => sum + r.amount, 0);
-  }, [today]);
+    return waterRecords
+      .filter(r => r.date === today)
+      .reduce((sum, r) => sum + r.amount, 0);
+  }, [waterRecords, today]);
 
   const todayTodos: DailyTodo[] = useMemo(() => {
-    const todos: DailyTodo[] = [];
-    const allMeds = [...mockMedicines, ...medicines];
-
-    allMeds.slice(0, 3).forEach(med => {
-      med.times.forEach((time, idx) => {
-        todos.push({
-          id: `med-${med.id}-${idx}`,
-          title: `服用 ${med.name} ${med.dosage}`,
-          type: 'medicine',
-          time,
-          isCompleted: med.takenToday[idx] || false,
-          relatedId: med.id
-        });
-      });
-    });
-
-    todos.push({
-      id: 'todo-1',
-      title: '测量血压血糖',
-      type: 'health',
-      time: '08:00',
-      isCompleted: true
-    });
-
-    todos.push({
-      id: 'todo-2',
-      title: '提醒饮水 200ml',
-      type: 'health',
-      time: '10:00',
-      isCompleted: false
-    });
-
-    todos.push({
-      id: 'todo-3',
-      title: '市一院心内科复诊',
-      type: 'appointment',
-      time: '06-22 09:30',
-      isCompleted: false
-    });
-
-    return todos.sort((a, b) => a.time.localeCompare(b.time));
-  }, [medicines]);
+    return [...todos].sort((a, b) => a.time.localeCompare(b.time));
+  }, [todos]);
 
   const completedCount = todayTodos.filter(t => t.isCompleted).length;
+
   const alertCount = useMemo(() => {
     let count = 0;
     if (todayBP && todayBP.status !== 'normal') count++;
     if (todayBS && todayBS.status !== 'normal') count++;
     if (todayTemp && todayTemp.status !== 'normal') count++;
-    const lowStockMeds = [...mockMedicines, ...medicines].filter(
+    const lowStockMeds = medicines.filter(
       m => m.remainingQuantity <= m.refillThreshold
     );
     count += lowStockMeds.length;
@@ -137,11 +91,16 @@ const HomePage: React.FC = () => {
 
   const handleToggleTodo = (todo: DailyTodo) => {
     if (todo.type === 'medicine' && todo.relatedId) {
-      const timeIndex = parseInt(todo.id.split('-').pop() || '0');
-      toggleMedicineTaken(todo.relatedId, timeIndex);
-    } else {
-      toggleTodo(todo.id);
+      const med = medicines.find(m => m.id === todo.relatedId);
+      if (med) {
+        const timeIdx = med.times.findIndex(t => t === todo.time);
+        if (timeIdx >= 0) {
+          toggleMedicineTaken(todo.relatedId, timeIdx);
+          return;
+        }
+      }
     }
+    toggleTodo(todo.id);
   };
 
   const getTodoTypeClass = (type: string) => {
@@ -161,6 +120,8 @@ const HomePage: React.FC = () => {
     };
     return map[type] || '';
   };
+
+  const todayMedicines = useMemo(() => medicines.slice(0, 2), [medicines]);
 
   return (
     <View className={styles.page}>
@@ -283,30 +244,30 @@ const HomePage: React.FC = () => {
         <View className={styles.section}>
           <SectionHeader
             title="今日健康"
-            actionText="查看周报"
-            actionPath="/pages/health/weekly-report/index"
+            actionText="查看更多"
+            onAction={() => Taro.switchTab({ url: '/pages/health/index' })}
           />
-          <View className="grid grid-cols-2 gap-24">
-            <HealthCard
-              type="bloodPressure"
-              title="血压"
-              icon="❤️"
-              value={todayBP ? `${todayBP.systolic}/${todayBP.diastolic}` : undefined}
-              subValue="mmHg"
-              time={todayBP ? `今天 ${todayBP.time}` : undefined}
-              status={(todayBP?.status || 'normal') as HealthStatus}
-              actionPath="/pages/health/blood-pressure/index"
-            />
-            <HealthCard
-              type="bloodSugar"
-              title="血糖"
-              icon="🩸"
-              value={todayBS ? `${todayBS.value}` : undefined}
-              subValue="mmol/L"
-              time={todayBS ? `今天 ${todayBS.time}` : undefined}
-              status={(todayBS?.status || 'normal') as HealthStatus}
-              actionPath="/pages/health/blood-sugar/index"
-            />
+          <View className={styles.healthCards}>
+            {todayBP && (
+              <HealthCard
+                type="bloodPressure"
+                value={`${todayBP.systolic}/${todayBP.diastolic}`}
+                unit="mmHg"
+                status={todayBP.status as HealthStatus}
+                label="血压"
+                icon="❤️"
+              />
+            )}
+            {todayBS && (
+              <HealthCard
+                type="bloodSugar"
+                value={todayBS.value.toString()}
+                unit="mmol/L"
+                status={todayBS.status as HealthStatus}
+                label="血糖"
+                icon="🩸"
+              />
+            )}
           </View>
         </View>
 
@@ -314,10 +275,10 @@ const HomePage: React.FC = () => {
           <SectionHeader
             title="今日用药"
             actionText="全部药品"
-            actionPath="/pages/medication/index"
+            onAction={() => Taro.switchTab({ url: '/pages/medication/index' })}
           />
-          <View className="flex flex-col gap-24">
-            {[...mockMedicines, ...medicines].slice(0, 2).map(med => (
+          <View className={styles.medicationList}>
+            {todayMedicines.map(med => (
               <MedicationCard
                 key={med.id}
                 medicine={med}
@@ -328,43 +289,36 @@ const HomePage: React.FC = () => {
         </View>
 
         <View className={styles.section}>
-          <SectionHeader title="今日待办" showAction={false} />
-          <View className={styles.todoCard}>
-            <View className={styles.todoHeader}>
-              <View className={styles.todoTitle}>
-                <Text className={styles.todoTitleIcon}>📋</Text>
-                <Text className={styles.todoTitleText}>待办事项</Text>
-              </View>
-              <Text className={styles.todoProgress}>
-                {completedCount}/{todayTodos.length} 已完成
-              </Text>
-            </View>
-            <View className={styles.todoList}>
-              {todayTodos.map(todo => (
-                <View
-                  key={todo.id}
-                  className={styles.todoItem}
-                  onClick={() => handleToggleTodo(todo)}
-                >
-                  <View className={classnames(styles.todoCheck, {
-                    [styles.todoChecked]: todo.isCompleted
-                  })}>
+          <SectionHeader
+            title="今日待办"
+            subtitle={`${completedCount}/${todayTodos.length} 已完成`}
+            showAction={false}
+          />
+          <View className={styles.todoList}>
+            {todayTodos.map(todo => (
+              <View
+                key={todo.id}
+                className={classnames(styles.todoItem, {
+                  [styles.todoCompleted]: todo.isCompleted
+                })}
+                onClick={() => handleToggleTodo(todo)}
+              >
+                <View className={styles.todoCheckbox}>
+                  {todo.isCompleted ? (
                     <Text className={styles.todoCheckIcon}>✓</Text>
-                  </View>
-                  <View className={styles.todoContent}>
-                    <Text className={classnames(styles.todoItemTitle, {
-                      [styles.todoItemTitleDone]: todo.isCompleted
-                    })}>
-                      {todo.title}
-                    </Text>
+                  ) : null}
+                </View>
+                <View className={styles.todoContent}>
+                  <Text className={styles.todoTitle}>{todo.title}</Text>
+                  <View className={styles.todoMeta}>
                     <Text className={styles.todoTime}>⏰ {todo.time}</Text>
-                  </View>
-                  <View className={classnames(styles.todoTypeTag, getTodoTypeClass(todo.type))}>
-                    <Text className={styles.todoTypeText}>{getTodoTypeText(todo.type)}</Text>
+                    <View className={classnames(styles.todoTypeTag, getTodoTypeClass(todo.type))}>
+                      <Text className={styles.todoTypeText}>{getTodoTypeText(todo.type)}</Text>
+                    </View>
                   </View>
                 </View>
-              ))}
-            </View>
+              </View>
+            ))}
           </View>
         </View>
       </View>

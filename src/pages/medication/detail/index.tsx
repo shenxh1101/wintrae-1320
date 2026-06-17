@@ -4,7 +4,6 @@ import Taro, { useRouter, useDidShow } from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 import { useAppStore } from '@/store';
-import { mockMedicines } from '@/data/medication';
 import type { Medicine } from '@/types';
 
 const MedicineDetailPage: React.FC = () => {
@@ -19,8 +18,7 @@ const MedicineDetailPage: React.FC = () => {
   });
 
   const medicine: Medicine | undefined = useMemo(() => {
-    const all = [...mockMedicines, ...medicines];
-    return all.find(m => m.id === id);
+    return medicines.find(m => m.id === id);
   }, [id, medicines]);
 
   const isLowStock = useMemo(() => {
@@ -61,21 +59,7 @@ const MedicineDetailPage: React.FC = () => {
 
   const handleToggleTime = (index: number) => {
     if (!medicine) return;
-    if (medicines.some(m => m.id === medicine.id)) {
-      toggleMedicineTaken(medicine.id, index);
-    } else {
-      Taro.showToast({
-        title: medicine.takenToday[index] ? '已取消打卡' : '打卡成功',
-        icon: 'success'
-      });
-      medicine.takenToday[index] = !medicine.takenToday[index];
-      if (!medicine.takenToday[index]) {
-        medicine.remainingQuantity += 1;
-      } else {
-        medicine.remainingQuantity = Math.max(0, medicine.remainingQuantity - 1);
-      }
-      forceUpdate({});
-    }
+    toggleMedicineTaken(medicine.id, index);
   };
 
   const handleCheckAll = () => {

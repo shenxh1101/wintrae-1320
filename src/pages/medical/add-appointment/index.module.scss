@@ -1,0 +1,174 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 200rpx;
+}
+
+.headerCard {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  padding: $spacing-xl $page-padding;
+  margin-bottom: $spacing-md;
+  border-radius: 0 0 $radius-xl $radius-xl;
+}
+
+.headerIcon {
+  font-size: 64rpx;
+  margin-bottom: $spacing-sm;
+  display: block;
+}
+
+.headerTitle {
+  display: block;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin-bottom: $spacing-xs;
+}
+
+.headerDesc {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.formSection {
+  background: $color-bg-card;
+  margin: $spacing-md $page-padding;
+  border-radius: $radius-lg;
+  padding: $spacing-md $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.formSectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.formSectionTitleText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.formSectionHint {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.formItem {
+  display: flex;
+  align-items: center;
+  min-height: 120rpx;
+  padding: $spacing-md 0;
+  border-bottom: 1rpx solid $color-divider;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.formLabel {
+  width: 140rpx;
+  flex-shrink: 0;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.formLabelRequired {
+  color: $color-error;
+  margin-right: 4rpx;
+}
+
+.formContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.formInput {
+  width: 100%;
+  height: 80rpx;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: 80rpx;
+}
+
+.formInputPlaceholder {
+  color: $color-text-disabled;
+}
+
+.pickerWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80rpx;
+  padding-right: 20rpx;
+}
+
+.pickerText {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.pickerPlaceholder {
+  color: $color-text-disabled;
+}
+
+.pickerArrow {
+  font-size: 36rpx;
+  color: $color-text-tertiary;
+  margin-left: $spacing-sm;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160rpx;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  padding: $spacing-sm 0;
+}
+
+.bottomBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $spacing-md $page-padding;
+  padding-bottom: calc($spacing-md + env(safe-area-inset-bottom));
+  background: $color-bg-card;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.saveBtn {
+  width: 100%;
+  height: $button-height-lg;
+  border-radius: $radius-button;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.99);
+  }
+}
+
+.saveBtnText {
+  font-size: $font-size-lg;
+  color: $color-text-white;
+  font-weight: $font-weight-semibold;
+}
+
+.saveBtnDisabled {
+  background: $color-bg-hover;
+}
+
+.saveBtnDisabled .saveBtnText {
+  color: $color-text-disabled;
+}

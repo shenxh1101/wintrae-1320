@@ -4,12 +4,12 @@ import Taro from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 import { useAppStore } from '@/store';
-import { mockMedicines } from '@/data/medication';
-import { mockFamilyMembers } from '@/data/family';
 import type { DailyTodo } from '@/types';
 
+const elderName = '王奶奶';
+
 const ElderModePage: React.FC = () => {
-  const { elderName, toggleTodo, toggleMedicineTaken, medicines } = useAppStore();
+  const { todos, familyMembers, toggleTodo, toggleMedicineTaken, medicines } = useAppStore();
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
 
@@ -34,55 +34,15 @@ const ElderModePage: React.FC = () => {
   }, []);
 
   const todayTodos: DailyTodo[] = useMemo(() => {
-    const todos: DailyTodo[] = [];
-    const allMeds = [...mockMedicines, ...medicines];
-
-    allMeds.slice(0, 2).forEach(med => {
-      med.times.forEach((time, idx) => {
-        todos.push({
-          id: `med-${med.id}-${idx}`,
-          title: `服用 ${med.name} ${med.dosage}`,
-          type: 'medicine',
-          time,
-          isCompleted: med.takenToday[idx] || false,
-          relatedId: med.id
-        });
-      });
-    });
-
-    todos.push({
-      id: 'todo-1',
-      title: '测量血压血糖',
-      type: 'health',
-      time: '08:00',
-      isCompleted: true
-    });
-
-    todos.push({
-      id: 'todo-2',
-      title: '提醒饮水 200ml',
-      type: 'health',
-      time: '10:00',
-      isCompleted: false
-    });
-
-    todos.push({
-      id: 'todo-3',
-      title: '市一院心内科复诊',
-      type: 'appointment',
-      time: '06-22 09:30',
-      isCompleted: false
-    });
-
-    return todos.sort((a, b) => a.time.localeCompare(b.time));
-  }, [medicines]);
+    return [...todos].sort((a, b) => a.time.localeCompare(b.time));
+  }, [todos]);
 
   const completedCount = todayTodos.filter(t => t.isCompleted).length;
   const totalCount = todayTodos.length;
 
   const emergencyContacts = useMemo(() => {
-    return mockFamilyMembers.filter(m => m.isAuthorized).slice(0, 3);
-  }, []);
+    return familyMembers.filter(m => m.isAuthorized).slice(0, 3);
+  }, [familyMembers]);
 
   const handleExit = () => {
     Taro.showModal({
@@ -99,8 +59,17 @@ const ElderModePage: React.FC = () => {
 
   const handleToggleTodo = (todo: DailyTodo) => {
     if (todo.type === 'medicine' && todo.relatedId) {
-      const timeIndex = parseInt(todo.id.split('-').pop() || '0');
-      toggleMedicineTaken(todo.relatedId, timeIndex);
+      const med = medicines.find(m => m.id === todo.relatedId);
+      if (med) {
+        const timeIdx = med.times.findIndex(t => t === todo.time);
+        if (timeIdx >= 0) {
+          toggleMedicineTaken(todo.relatedId, timeIdx);
+        } else {
+          toggleTodo(todo.id);
+        }
+      } else {
+        toggleTodo(todo.id);
+      }
     } else {
       toggleTodo(todo.id);
     }

@@ -1,14 +1,19 @@
 import React, { useMemo } from 'react';
 import { View, Text } from '@tarojs/components';
+import Taro, { useRouter } from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
-import { mockCheckupRecords } from '@/data/medical';
+import { useAppStore } from '@/store';
 import type { CheckupRecord, HealthStatus } from '@/types';
 
 const CheckupPage: React.FC = () => {
+  const router = useRouter();
+  const id = router.params.id;
+  const { checkupRecords } = useAppStore();
+
   const record: CheckupRecord | undefined = useMemo(() => {
-    return mockCheckupRecords[0];
-  }, []);
+    return checkupRecords.find(r => r.id === id);
+  }, [id, checkupRecords]);
 
   const getStats = useMemo(() => {
     if (!record) return { normal: 0, warning: 0, danger: 0 };

@@ -6,21 +6,15 @@ import classnames from 'classnames';
 import SectionHeader from '@/components/SectionHeader';
 import MedicalCard from '@/components/MedicalCard';
 import EmptyState from '@/components/EmptyState';
-import {
-  mockAppointments,
-  mockCheckupRecords,
-  mockDoctorAdvices
-} from '@/data/medical';
-import type { MedicalAppointment, CheckupRecord } from '@/types';
+import { useAppStore } from '@/store';
+import type { CheckupRecord } from '@/types';
 
 type TabType = 'appointments' | 'checkups' | 'advices';
 
 const MedicalPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('appointments');
 
-  const appointments = mockAppointments;
-  const checkupRecords = mockCheckupRecords;
-  const doctorAdvices = mockDoctorAdvices;
+  const { appointments, checkupRecords, doctorAdvices } = useAppStore();
 
   const upcomingAppointments = useMemo(
     () => appointments.filter(a => a.status === 'upcoming'),
@@ -31,7 +25,7 @@ const MedicalPage: React.FC = () => {
 
   const handleAdd = () => {
     if (activeTab === 'appointments') {
-      Taro.navigateTo({ url: '/pages/medical/appointment/index' });
+      Taro.navigateTo({ url: '/pages/medical/add-appointment/index' });
     } else {
       Taro.showToast({ title: '功能开发中', icon: 'none' });
     }

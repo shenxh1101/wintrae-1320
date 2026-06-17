@@ -16,6 +16,7 @@ export default defineAppConfig({
     'pages/medication/detail/index',
     'pages/medical/appointment/index',
     'pages/medical/checkup/index',
+    'pages/medical/add-appointment/index',
     'pages/home/elder-mode/index',
     'pages/family/add-member/index'
   ],

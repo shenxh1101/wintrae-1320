@@ -1,11 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Input, Textarea, Button } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 import { useAppStore } from '@/store';
 import EmptyState from '@/components/EmptyState';
-import { mockSleepRecords } from '@/data/health';
 import { getTodayDate } from '@/utils';
 import type { SleepRecord } from '@/types';
 
@@ -38,11 +37,6 @@ const SleepPage: React.FC = () => {
   const [duration, setDuration] = useState<string>('');
   const [quality, setQuality] = useState<SleepQuality>('good');
   const [note, setNote] = useState<string>('');
-
-  const allRecords = useMemo(
-    () => [...mockSleepRecords, ...sleepRecords],
-    [sleepRecords]
-  );
 
   const handleQualitySelect = (key: SleepQuality) => {
     setQuality(key);
@@ -136,12 +130,12 @@ const SleepPage: React.FC = () => {
 
       <View className={styles.sectionHeader}>
         <Text className={styles.sectionTitle}>历史记录</Text>
-        <Text className={styles.sectionCount}>共 {allRecords.length} 条</Text>
+        <Text className={styles.sectionCount}>共 {sleepRecords.length} 条</Text>
       </View>
 
-      {allRecords.length > 0 ? (
+      {sleepRecords.length > 0 ? (
         <View className={styles.recordList}>
-          {allRecords.map((record) => (
+          {sleepRecords.map((record) => (
             <View key={record.id} className={styles.recordItem}>
               <View className={styles.recordIconWrap}>
                 <Text className={styles.recordIcon}>😴</Text>

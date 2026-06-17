@@ -1,15 +1,19 @@
 import React, { useMemo } from 'react';
 import { View, Text } from '@tarojs/components';
-import Taro from '@tarojs/taro';
+import Taro, { useRouter } from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
-import { mockAppointments } from '@/data/medical';
+import { useAppStore } from '@/store';
 import type { MedicalAppointment } from '@/types';
 
 const AppointmentPage: React.FC = () => {
+  const router = useRouter();
+  const id = router.params.id;
+  const { appointments } = useAppStore();
+
   const appointment: MedicalAppointment | undefined = useMemo(() => {
-    return mockAppointments[0];
-  }, []);
+    return appointments.find(a => a.id === id);
+  }, [id, appointments]);
 
   const getTypeText = (type: string) => {
     const map: Record<string, string> = {

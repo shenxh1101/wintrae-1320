@@ -7,14 +7,6 @@ import { useAppStore } from '@/store';
 import SectionHeader from '@/components/SectionHeader';
 import StatCard from '@/components/StatCard';
 import EmptyState from '@/components/EmptyState';
-import {
-  mockBloodPressureRecords,
-  mockBloodSugarRecords,
-  mockTemperatureRecords,
-  mockSleepRecords,
-  mockWaterRecords,
-  mockBowelRecords
-} from '@/data/health';
 import { average, getStatusText } from '@/utils';
 import type { HealthStatus } from '@/types';
 
@@ -81,30 +73,12 @@ const HealthPage: React.FC = () => {
 
   const [activeType, setActiveType] = useState<string>('bloodPressure');
 
-  const allBp = useMemo(
-    () => [...mockBloodPressureRecords, ...bloodPressureRecords],
-    [bloodPressureRecords]
-  );
-  const allBs = useMemo(
-    () => [...mockBloodSugarRecords, ...bloodSugarRecords],
-    [bloodSugarRecords]
-  );
-  const allTemp = useMemo(
-    () => [...mockTemperatureRecords, ...temperatureRecords],
-    [temperatureRecords]
-  );
-  const allSleep = useMemo(
-    () => [...mockSleepRecords, ...sleepRecords],
-    [sleepRecords]
-  );
-  const allWater = useMemo(
-    () => [...mockWaterRecords, ...waterRecords],
-    [waterRecords]
-  );
-  const allBowel = useMemo(
-    () => [...mockBowelRecords, ...bowelRecords],
-    [bowelRecords]
-  );
+  const allBp = bloodPressureRecords;
+  const allBs = bloodSugarRecords;
+  const allTemp = temperatureRecords;
+  const allSleep = sleepRecords;
+  const allWater = waterRecords;
+  const allBowel = bowelRecords;
 
   const recentBp = allBp.slice(0, 7);
   const avgSystolic = useMemo(

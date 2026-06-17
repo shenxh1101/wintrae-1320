@@ -3,15 +3,7 @@ import { View, Text } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
-import {
-  mockBloodPressureRecords,
-  mockBloodSugarRecords,
-  mockTemperatureRecords,
-  mockSleepRecords,
-  mockWaterRecords,
-  mockBowelRecords
-} from '@/data/health';
-import { mockMedicines } from '@/data/medication';
+import { useAppStore } from '@/store';
 import { average } from '@/utils';
 import type { HealthStatus } from '@/types';
 
@@ -35,47 +27,57 @@ interface AlertItem {
 }
 
 const WeeklyReportPage: React.FC = () => {
+  const {
+    bloodPressureRecords,
+    bloodSugarRecords,
+    temperatureRecords,
+    sleepRecords,
+    waterRecords,
+    bowelRecords,
+    medicines
+  } = useAppStore();
+
   const weekBP = useMemo(() => {
-    return mockBloodPressureRecords.filter(r => {
+    return bloodPressureRecords.filter(r => {
       const d = r.date;
       return d >= weekStart && d <= weekEnd;
     });
-  }, []);
+  }, [bloodPressureRecords]);
 
   const weekBS = useMemo(() => {
-    return mockBloodSugarRecords.filter(r => {
+    return bloodSugarRecords.filter(r => {
       const d = r.date;
       return d >= weekStart && d <= weekEnd;
     });
-  }, []);
+  }, [bloodSugarRecords]);
 
   const weekTemp = useMemo(() => {
-    return mockTemperatureRecords.filter(r => {
+    return temperatureRecords.filter(r => {
       const d = r.date;
       return d >= weekStart && d <= weekEnd;
     });
-  }, []);
+  }, [temperatureRecords]);
 
   const weekSleep = useMemo(() => {
-    return mockSleepRecords.filter(r => {
+    return sleepRecords.filter(r => {
       const d = r.date;
       return d >= weekStart && d <= weekEnd;
     });
-  }, []);
+  }, [sleepRecords]);
 
   const weekWater = useMemo(() => {
-    return mockWaterRecords.filter(r => {
+    return waterRecords.filter(r => {
       const d = r.date;
       return d >= weekStart && d <= weekEnd;
     });
-  }, []);
+  }, [waterRecords]);
 
   const weekBowel = useMemo(() => {
-    return mockBowelRecords.filter(r => {
+    return bowelRecords.filter(r => {
       const d = r.date;
       return d >= weekStart && d <= weekEnd;
     });
-  }, []);
+  }, [bowelRecords]);
 
   const stats = useMemo(() => {
     const bpAbnormal = weekBP.filter(r => r.status !== 'normal').length;
@@ -100,8 +102,8 @@ const WeeklyReportPage: React.FC = () => {
     const totalBowel = weekBowel.reduce((sum, b) => sum + b.frequency, 0);
     const normalBowelDays = weekBowel.filter(b => b.consistency === 'normal').length;
 
-    const totalDoses = mockMedicines.reduce((sum, m) => sum + m.times.length * 7, 0);
-    const takenDoses = mockMedicines.reduce(
+    const totalDoses = medicines.reduce((sum, m) => sum + m.times.length * 7, 0);
+    const takenDoses = medicines.reduce(
       (sum, m) => sum + m.takenToday.filter(Boolean).length * 5,
       0
     );
@@ -123,7 +125,7 @@ const WeeklyReportPage: React.FC = () => {
       tempAbnormal,
       compliance
     };
-  }, [weekBP, weekBS, weekTemp, weekSleep, weekWater, weekBowel]);
+  }, [weekBP, weekBS, weekTemp, weekSleep, weekWater, weekBowel, medicines]);
 
   const alerts: AlertItem[] = useMemo(() => {
     const list: AlertItem[] = [];
@@ -205,7 +207,7 @@ const WeeklyReportPage: React.FC = () => {
       }
     });
 
-    mockMedicines.forEach(m => {
+    medicines.forEach(m => {
       if (m.remainingQuantity <= m.refillThreshold) {
         list.push({
           type: 'warning',
@@ -217,7 +219,7 @@ const WeeklyReportPage: React.FC = () => {
     });
 
     return list;
-  }, [weekBP, weekBS, weekTemp, weekSleep, weekBowel]);
+  }, [weekBP, weekBS, weekTemp, weekSleep, weekBowel, medicines]);
 
   const recommendations = useMemo(() => {
     const list: { icon: string; title: string; desc: string }[] = [];

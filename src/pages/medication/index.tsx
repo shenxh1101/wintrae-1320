@@ -7,17 +7,13 @@ import { useAppStore } from '@/store';
 import SectionHeader from '@/components/SectionHeader';
 import MedicationCard from '@/components/MedicationCard';
 import EmptyState from '@/components/EmptyState';
-import { mockMedicines } from '@/data/medication';
 import { getTodayDate } from '@/utils';
 
 const MedicationPage: React.FC = () => {
   const { medicines, toggleMedicineTaken, addMedicine } = useAppStore();
   const today = getTodayDate();
 
-  const allMedicines = useMemo(
-    () => [...mockMedicines, ...medicines],
-    [medicines]
-  );
+  const allMedicines = medicines;
 
   const lowStockMedicines = useMemo(
     () => allMedicines.filter(m => m.remainingQuantity <= m.refillThreshold),

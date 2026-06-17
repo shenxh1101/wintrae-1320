@@ -4,7 +4,6 @@ import Taro from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 import { useAppStore } from '@/store';
-import { mockBloodSugarRecords } from '@/data/health';
 import { getStatusText, getTodayDate, getCurrentTime } from '@/utils';
 import type { HealthStatus } from '@/types';
 
@@ -44,11 +43,6 @@ const BloodSugarPage: React.FC = () => {
   const [type, setType] = useState<SugarType>('fasting');
   const [date, setDate] = useState<string>(getTodayDate());
   const [time, setTime] = useState<string>(getCurrentTime());
-
-  const allRecords = useMemo(
-    () => [...mockBloodSugarRecords, ...bloodSugarRecords],
-    [bloodSugarRecords]
-  );
 
   const previewStatus = useMemo(() => {
     const v = Number(value);
@@ -176,11 +170,11 @@ const BloodSugarPage: React.FC = () => {
       <View className={styles.historySection}>
         <View className={styles.sectionHeader}>
           <Text className={styles.sectionTitle}>历史记录</Text>
-          <Text className={styles.sectionCount}>共 {allRecords.length} 条</Text>
+          <Text className={styles.sectionCount}>共 {bloodSugarRecords.length} 条</Text>
         </View>
 
         <View className={styles.historyList}>
-          {allRecords.slice(0, 10).map((record) => (
+          {bloodSugarRecords.slice(0, 10).map((record) => (
             <View key={record.id} className={styles.historyItem}>
               <View className={styles.historyIconWrap}>
                 <Text className={styles.historyIcon}>🩸</Text>

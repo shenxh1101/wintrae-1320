@@ -1,11 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Input, Textarea, Button } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 import { useAppStore } from '@/store';
 import EmptyState from '@/components/EmptyState';
-import { mockTemperatureRecords } from '@/data/health';
 import { getStatusText, getTodayDate, getCurrentTime } from '@/utils';
 import type { HealthStatus } from '@/types';
 
@@ -14,11 +13,6 @@ const TemperaturePage: React.FC = () => {
 
   const [value, setValue] = useState<string>('');
   const [note, setNote] = useState<string>('');
-
-  const allRecords = useMemo(
-    () => [...mockTemperatureRecords, ...temperatureRecords],
-    [temperatureRecords]
-  );
 
   const handleSave = () => {
     const numValue = parseFloat(value);
@@ -87,12 +81,12 @@ const TemperaturePage: React.FC = () => {
 
       <View className={styles.sectionHeader}>
         <Text className={styles.sectionTitle}>历史记录</Text>
-        <Text className={styles.sectionCount}>共 {allRecords.length} 条</Text>
+        <Text className={styles.sectionCount}>共 {temperatureRecords.length} 条</Text>
       </View>
 
-      {allRecords.length > 0 ? (
+      {temperatureRecords.length > 0 ? (
         <View className={styles.recordList}>
-          {allRecords.map((record) => (
+          {temperatureRecords.map((record) => (
             <View key={record.id} className={styles.recordItem}>
               <View className={styles.recordIconWrap}>
                 <Text className={styles.recordIcon}>🌡️</Text>

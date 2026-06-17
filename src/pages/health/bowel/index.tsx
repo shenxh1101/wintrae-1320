@@ -1,11 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Input, Textarea, Button } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 import { useAppStore } from '@/store';
 import EmptyState from '@/components/EmptyState';
-import { mockBowelRecords } from '@/data/health';
 import { getTodayDate } from '@/utils';
 import type { BowelRecord } from '@/types';
 
@@ -39,11 +38,6 @@ const BowelPage: React.FC = () => {
   const [frequency, setFrequency] = useState<string>('');
   const [consistency, setConsistency] = useState<BowelConsistency>('normal');
   const [note, setNote] = useState<string>('');
-
-  const allRecords = useMemo(
-    () => [...mockBowelRecords, ...bowelRecords],
-    [bowelRecords]
-  );
 
   const handleConsistencySelect = (key: BowelConsistency) => {
     setConsistency(key);
@@ -155,12 +149,12 @@ const BowelPage: React.FC = () => {
 
       <View className={styles.sectionHeader}>
         <Text className={styles.sectionTitle}>历史记录</Text>
-        <Text className={styles.sectionCount}>共 {allRecords.length} 条</Text>
+        <Text className={styles.sectionCount}>共 {bowelRecords.length} 条</Text>
       </View>
 
-      {allRecords.length > 0 ? (
+      {bowelRecords.length > 0 ? (
         <View className={styles.recordList}>
-          {allRecords.map((record) => (
+          {bowelRecords.map((record) => (
             <View key={record.id} className={styles.recordItem}>
               <View className={styles.recordIconWrap}>
                 <Text className={styles.recordIcon}>💩</Text>

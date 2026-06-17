@@ -6,7 +6,6 @@ import classnames from 'classnames';
 import { useAppStore } from '@/store';
 import SectionHeader from '@/components/SectionHeader';
 import EmptyState from '@/components/EmptyState';
-import { mockFamilyMembers, mockCareMessages, mockCareTasks } from '@/data/family';
 import { formatRelativeTime } from '@/utils';
 
 type TabType = 'members' | 'messages' | 'tasks';
@@ -15,20 +14,11 @@ const FamilyPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('members');
   const [messageInput, setMessageInput] = useState('');
 
-  const { familyMembers, careMessages, careTasks, sendCareMessage, completeTask } = useAppStore();
+  const { familyMembers, careMessages, careTasks, sendCareMessage, completeTask, toggleFamilyAuth } = useAppStore();
 
-  const allMembers = useMemo(
-    () => [...mockFamilyMembers, ...familyMembers],
-    [familyMembers]
-  );
-  const allMessages = useMemo(
-    () => [...mockCareMessages, ...careMessages],
-    [careMessages]
-  );
-  const allTasks = useMemo(
-    () => [...mockCareTasks, ...careTasks],
-    [careTasks]
-  );
+  const allMembers = familyMembers;
+  const allMessages = careMessages;
+  const allTasks = careTasks;
 
   const unreadCount = allMessages.filter(m => !m.isRead).length;
   const pendingTasks = allTasks.filter(t => t.status === 'pending').length;
@@ -51,6 +41,7 @@ const FamilyPage: React.FC = () => {
   };
 
   const handleToggleAuth = (memberId: string, name: string) => {
+    toggleFamilyAuth(memberId);
     Taro.showToast({ title: `已更新${name}的授权`, icon: 'none' });
   };
 

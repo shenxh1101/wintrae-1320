@@ -1,11 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Input, Button } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 import { useAppStore } from '@/store';
 import EmptyState from '@/components/EmptyState';
-import { mockWaterRecords } from '@/data/health';
 import { getTodayDate, getCurrentTime } from '@/utils';
 import type { WaterRecord } from '@/types';
 
@@ -15,11 +14,6 @@ const WaterPage: React.FC = () => {
   const { waterRecords, addWater } = useAppStore();
 
   const [amount, setAmount] = useState<string>('');
-
-  const allRecords = useMemo(
-    () => [...mockWaterRecords, ...waterRecords],
-    [waterRecords]
-  );
 
   const handleQuickAmount = (value: number) => {
     setAmount(value.toString());
@@ -92,12 +86,12 @@ const WaterPage: React.FC = () => {
 
       <View className={styles.sectionHeader}>
         <Text className={styles.sectionTitle}>历史记录</Text>
-        <Text className={styles.sectionCount}>共 {allRecords.length} 条</Text>
+        <Text className={styles.sectionCount}>共 {waterRecords.length} 条</Text>
       </View>
 
-      {allRecords.length > 0 ? (
+      {waterRecords.length > 0 ? (
         <View className={styles.recordList}>
-          {allRecords.map((record) => (
+          {waterRecords.map((record) => (
             <View key={record.id} className={styles.recordItem}>
               <View className={styles.recordIconWrap}>
                 <Text className={styles.recordIcon}>💧</Text>
